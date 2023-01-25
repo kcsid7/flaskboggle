@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boggle Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="container">
+    <section id="boggle">
+
+    <nav>
+        <h3>Boggle Game</h3>
+        <div id="score">
+            <h4>High Score: {{ highscore }}</h4>
+            <h4>Score: <span class="curr_score"></span></h4>
+            <h4>Time Left: <span class="time_left"></span></h4>
+        </div>
+    </nav>
+
+    <!-- Display Messages -->
+    <div id="messages">
+    </div>
+
+    <!-- Display Words that have been inputted -->
+    <div>
+        <ul id="guessed_words">
+        </ul>
+    </div>
+
+    <!-- Guess Input Forms -->
+    <form id="guess_form" method="POST">
+        <input type="text" name="guess" id="guess_input" autofocus>
+        <button class="btn btn-md btn-primary" id="guess_word_submit" type="submit">Submit</button>
+    </form>
+
+    <!-- Boggle Table -->
+    <table class="boggle_board"> 
+        <tbody>
+            {% for r in new_board %}
+            <tr>
+                {% for c in r %}
+                <td>{{ c }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </section>
+
+    
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+    <script src="/static/app.js"></script>
+    <script>
+        let newGame = new Boggle("boggle", 60);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</body>
+</html>
